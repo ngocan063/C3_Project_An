@@ -43,7 +43,7 @@ public class Restaurant {
                 return item;
         }
         return null;
-    }
+    } 
 
     public void addToMenu(String name, int price) {
         Item newItem = new Item(name,price);

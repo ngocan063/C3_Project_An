@@ -63,4 +63,22 @@ class RestaurantTest {
     }
 
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>ORDER<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    @Test
+    public void chose_one_item_in_menu_should_return_expected_order_cost_of_that_item_only() {
+        createRestaurantInfo();
+        int orderTotalCost=restaurant.getOrderTotal("Sweet corn soup");
+        assertEquals(restaurant.findItemByName("Sweet corn soup").getPrice(),orderTotalCost);
+        System.out.println("Your order will cost $"+orderTotalCost);
+    }
+    @Test
+    public void chose_two_items_in_menu_should_return_expected_order_total_cost_of_two_items() {
+        createRestaurantInfo();
+        int orderTotalCost = restaurant.getOrderTotal("Sweet corn soup", "Vegetable lasagne");
+        int firstItemprice = restaurant.findItemByName("Sweet corn soup").getPrice();
+        int secondItemprice = restaurant.findItemByName("Vegetable lasagne").getPrice();
+        assertEquals(firstItemprice + secondItemprice, orderTotalCost);
+        System.out.println("Your order will cost $" + orderTotalCost);
+    }
+    //<<<<<<<<<<<<<<<<<<<<<<<ORDER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
