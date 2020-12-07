@@ -3,10 +3,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RestaurantTest {
+class RestaurantTest { 
         Restaurant restaurant;
         //REFACTOR ALL THE REPEATED LINES OF CODE
         private void createRestaurantInfo() {
@@ -63,6 +65,7 @@ class RestaurantTest {
     }
 
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>ORDER<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     @Test
     public void chose_one_item_in_menu_should_return_expected_order_cost_of_that_item_only() {
@@ -74,11 +77,11 @@ class RestaurantTest {
     @Test
     public void chose_two_items_in_menu_should_return_expected_order_total_cost_of_two_items() {
         createRestaurantInfo();
-        int orderTotalCost = restaurant.getOrderTotal("Sweet corn soup", "Vegetable lasagne");
-        int firstItemprice = restaurant.findItemByName("Sweet corn soup").getPrice();
-        int secondItemprice = restaurant.findItemByName("Vegetable lasagne").getPrice();
-        assertEquals(firstItemprice + secondItemprice, orderTotalCost);
-        System.out.println("Your order will cost $" + orderTotalCost);
+        int orderTotalCost=restaurant.getOrderTotal("Sweet corn soup","Vegetable lasagne");
+        int firstItemprice=restaurant.findItemByName("Sweet corn soup").getPrice();
+        int secondItemprice=restaurant.findItemByName("Vegetable lasagne").getPrice();
+        assertEquals(firstItemprice+secondItemprice,orderTotalCost);
+        System.out.println("Your order will cost $"+orderTotalCost);
     }
     //<<<<<<<<<<<<<<<<<<<<<<<ORDER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }

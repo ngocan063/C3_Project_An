@@ -15,7 +15,7 @@ public class Restaurant {
         this.location = location;
         this.openingTime = openingTime;
         this.closingTime = closingTime;
-    }
+    } 
 
     public boolean isRestaurantOpen() {
         if ((getCurrentTime().isAfter(openingTime))&&(getCurrentTime().isBefore(closingTime)))
@@ -37,13 +37,13 @@ public class Restaurant {
         //MY CODE TO RETURN MENU
     }
 
-    private Item findItemByName(String itemName){
+    public Item findItemByName(String itemName){
         for(Item item: menu) {
             if(item.getName().equals(itemName))
                 return item;
         }
         return null;
-    } 
+    }
 
     public void addToMenu(String name, int price) {
         Item newItem = new Item(name,price);
@@ -63,12 +63,22 @@ public class Restaurant {
                 +"Location:"+ location + "\n"
                 +"Opening time:"+ openingTime +"\n"
                 +"Closing time:"+ closingTime +"\n"
-                +"Menu:"+"\n"+getMenu());
+                +"Menu:"+"\n"+getMenu()); 
 
     }
 
     public String getName() {
         return name;
+    }
+
+    // Order total cost feature implementation
+
+    public int getOrderTotal(String... names)
+    {
+        int orderValue=0;
+        for (String name:names)
+        { orderValue+=findItemByName(name).getPrice();}
+        return orderValue;
     }
 
 }
